@@ -1,0 +1,260 @@
+[1week]
+200713 marvelintro
+sec1
+directional blur
+sequence layer
+-타임 스트래치
+
+작은 움직임- 개별 레이어
+큰 움직임 - pre-comp 후 작업
+
+sec2
+카메라 레이어(+ null object: 카메라 작업을 편하게 작업), 3D레이어 
+fade in - Luma key
+옵티컬 플레어(video copilot 유료 이펙트: solid - optical flares)
+
+sec3
+3d레이어, drop shadow
+
+작은 움직임- 개별 레이어
+큰 움직임 - pre-comp 후 작업
+
++@
+track matte
+질감처리
+비네트
+로고 안 영상 - c4d
+
+200715
+플러그인 소개, 사용
+https://www.videocopilot.net/
+
+1. saber effect : 광선 효과
+효과 적용 시, solid layer 생성 후 해당 레이어에 효과를 적용
+1-1. option
+-glow intensity : 빛의 밝기
+-glow spread : 밝기가 흩뿌여지는 정도
+-glow bias : 안쪽에서 빛나는 빛의 정도
+-core size : 안쪽에 있는 바 크기
+(커지면 커질수록 밝기도 밝아짐)
+-core start/end : 바의 시작점/끝점 길이와 위치 조절 (solid 값 변경 시 화질 저하)
+-custonmize core : 코어를 원하는 대로
+-start offset : = Trim path
+-end roundness : 끝부분 모양 설정 
+-offset size : on/off = 자연스러움/인위적
+-halo intensity,size : 형광등 코어쪽에 투명하게 빛나는 빛번짐 표현 설정
+-core softness : = blur
+
+Flicker : 반짝임 정도
+-flicker intensity : 반짝이는 세기/정도
+-flicker speed : 반짝이는 시간
+-
+
+Distortion : 변형/외곡
+-distortion amount : 외곡의 정도
+-distortion type : 외곡 모양
+-invert : 외곡 모양 반전
+-wind speed : 바람의 정도
+-wind direction : 바람의 각도
+-noise speed: 주변에 아른거리는 효과
+scale : 크기
+biass : 강도(부드러운 정도)
+complexity : 끈끈함 정도
+aspect ratio :픽셀 비율
+
+core distortion : 코어의 외곡
+
+Render setting 
+-motion blur : on/off, composition(timeline 안에서 설정)
+-Gamma : 컴퓨터와 사용자가 바라보는 시선 차이 
+(대부분 기본값 1 설정, 변경 시 다각도에서 조절 어려움)
+-bright ness : 밝기값 (밝기 변경 시 먼저 사용)
+-saturation : 채도값 
+-composition settings : Transparent(뒷배경 투명화-자연스러움 +@timeline blending mode 설정 )
+
+2. saber effect 이용하여 네온사인 만들기
+
+-comp1 : 네온 불빛
+-comp2 : 네온 간판- bevel Alpha로 간판이 가진 굴곡 표현
+-adjustment layer : 배경 - Gradient Ramp 어두운 공간에서 네온으로 인해 밝아진 배경 표현
+ 
+200716
+displacementmap : 맵레이어를 활용하여 왜곡을 주는 효과
+맵레이어 : 새로 솔리드 생성 후 fractical noise
+왜곡을 줄레이어 : 모든 레이어
+*adjustmen layer
+**맵레이어는 항상 pre-comp
+
+2.Auto trace
+Current Frame : 이미지에 대한 프레임
+work area : 영상에대한 프레임
+-option setting값에 따라 프레임 수가 달라짐
+
+
+200717 particular
+1. RED GIANT 사이트 소개 https://www.redgiant.com/ 
+실무에서 많이 쓰이는 VFX
+
+2. Particular setting
+- show system : 파티클 추가 옵션 - 해당 옵션 대신 타임라인에서 파티클 복제 작업이 편리하고 간편하다
+- emitter : 파티클이 나오는 곳에 대한 정보
+ emitter behavior : Continuous : 지속적인 발생/Explode : 폭발 
+ particle/sec : 초당 발생 입자 수
+ emitter type : 나오는 형태
+ Lighting Name : Lighting 수업 시 자세한 설명
+ Direction : 방향 설정 
+ *Velocity : 초기 운동량
+(얼마만큼의 힘을 갖고 파티클 입자가 출발하는지) 
+Velocity Random : 운동량의 무작위 값
+Velocity distribution : 편차 (입자마다 속도의 차이를 줌)
+Velocity from motion  : 관성
+
+- particle : 입자에 대한 정보
+Life : 살아있는 시간
+particle type : 입자 모양 설정(sprite - 원하는 이미지 모양을 불러와 사용)
+*over life : 파티클이 생성되고 사라질 때까지 ~가 된다
+(랜덤으로 파티클을 생성할 때 해당 기능이 들어간 옵션들을 잘 이용해야한다)
+blend mode : 파티클이 겹쳐 나올 때 블렌딩 모드
+
+
+- shading : 그림자, 겹쳐져 있을 때 그림자, 빛을 받았을 때의 정보 lighting과 함께 사용
+  shading  수업시 자세한 설명
+
+- physics : 물리적인 힘(중력, 바람 등)
+ physics model : air/공기, bounce/튕겨짐, fluid/액체
+ gravity : 중력값
+ physics Time factor : 배속, 속도
+ air resistance rotation : 공기 저항 수치
+ spin amplitude : (개인 입자 옵션) 돌아다니는 값
+ spin frequency : 입자의 빈도
+ fade in spin : 서서히 사라지는 값  
+ Visualize Fields : 바람의 기류 확인, 확인 후 꺼두지 않으면 렌더 돌린 최종 영상에서도 기준선이 함께 렌더가 걸린다.
+ Tubulence Fields : (모든 입자의 전체적인 옵션)보이지 않는 기류
+ Spherical Field : 구의 흐름
+
+- aux system : 파티클(입자)가 이미터가 되게 하는 정보
+fire particle 수업 시 설명
+
+- W.T : 컨트롤러 안에 있는 전체적인 움직임 조절
+
+- Visibility : 보이는 것들
+fire particle 수업 시 설명
+
+- Rendering : 모션 블러 등 render settting
+- 바람의 기류 확인
+
+200720
+particular plug-in을 이용한 우주 배경
+사용한 옵션
+emitter type : box
+emitter individual : solid 사이즈에 맞춤
+Velocity : 0 (나타나는 움직임을 억제해줌)
+emitter behavior : explode (폭발)
+particle type : glow sphere
+opacity random : 공감각 표현
+life
+opacity over life : (Randomize) 반짝임
+
++@
+optical Flares : 은하수
+*Turbulent Displace : 보이지 않는 기류를 외곡시켜주는 효과
+-amount
+-complexity:10(최대값)
+
+camera layer : 공간감   
+
+text tracking -  *align/paragraph 가운데 정렬*
+*matte choker - 테두리를 깔끔하게 다듬어 주는 효과
+motion tile : layer를 화면에 타일처럼 깔아주는 기능
+blobbylize : 거품/둥근 효과
+ccglass : 
+
+0721
+lens flare : 사용 시에는 black solid, optical flare plug-in 나오기 전까지 자주 사용되었다
+optical pro preset(유료 3번째) : 미리 만들어진 다양한 preset effect가 있다. 나머지 것들은 preset 소스가 없어서 직접 만들어야 함
+영상합성에 많이 쓰임(***blending mode : add, tracking, null obj, parents)
+optical flares(기본: 2d layer) option 설명
+flare setup : colorize-color 부분 정도만 건들이고 필요에 따라 preset에서 원하는 빛을 합성
+Position : 빛의 위치
+Center Position : 빛의 아이리스의 위치 
+brightness : 밝기
+scale : 크기 (아이리스도 함께 커짐)
+밝기와 크키는 서로 상호작용
+rotation offset : 빛의 회전
+color : 빛의 색상 (flare setup 안에 있는 glow color는 안쪽에서 나오는 빛 색을 변경)
+color mode : tint - 전체적으로 눌러주는 색
+                 multiply - 합성(하위 레이어들과 자연스러움)
+animation evolution : 빛이 부서지는 느낌 (ex, 나뭇잎 사이로 빛이 은은하게 퍼짐)
+positioning mode : track light - light layer를 가지고 작업
+                         mask - 마스크를 이용해 빛을 씌움
+foreground layers : 역광 표현
+flicker : 빛의 깜빡임
+motion blur : 자주 사용하진 않지만 필요 시 timeline에서 효과를 준다(무거운 효과라서 튕길 위험 많음)
+
+xy position을 null obj 움직임에 연동시키기 - expression : alt + stopwatch
+cf. white solid를 이용한 눈속임(자주 쓰인다)
+
+0722
+opticla flares 응용
+
+mask : 기존에 있던 syposition 설정이 사라지고 mask 설정이 생성된다
+원하는 마스크 vertex 우클릭 - mask path - set first vertex : 마스크의 시작점을 바꿔주는 기능
+
+0724 background music
+1. 사용하기 괜찮은 사이트
+- 한국 음악 저작권 협회(저작권 확인 용) : https://www.komca.or.kr/CTLJSP
+- 비디오 하이브(+템플릿) : https://placeit.net/quote-video-maker?utm_source=envatomarket&utm_medium=promos&utm_campaign=placeit_mkt-menu-vidoe&utm_content=inspirational_quote
+- youtube no copyright music
+ 
+2. convert to auideo keyframes 
+표현식을 이용한 키프레임 parents,속도와 크기는 사칙연산으로 조절한다.
+
+3. sound keys(유료)
+-composition pannel
+spectrum range : 결과물에 도출해 낼 음역대의 범위 설정
+output : spectrum range 범위 안에서 출력
+
+-option
+Q : 사운드 키의 모양을 부드럽게 연결
+sub base : 앞의 그래프
+*range1
+Type
+peak of range : 높은 영역을 기준으로 잡아 출력
+on/off trigger : 특정 영역을 잡아 터트리는 느낌 
+
+Falloff
+instant : 결과물이 바로 도출
+linear : 서서히 내려가는 결과물 (속도가 느려져 끊김이 보임)
+0...100(기본 값)사칙연산이 필요할 땐 따로 넣을 필요 없이 custom 이용
+
+ 3.shine(유료)
+레이어 obj에 대한 역광
+
+
+**음악 영상은(pre-comp-move all)  : 후반 수정 작업에 꼬임을 줄일 수 있음.
+* 솔리드에 넣고 적용, 조절이 쉽다, +수정을 하고 적용을 시킬 때 반드시 apply 
+버튼을 눌러 적용
+
+
+0727
+1. 동작에 맞춘 brush animation
+- brush tool - duration로 프레임 수 조절
+- glow - 완성 된 브러쉬 레이어를 복제하여 paint on Transparent 활성화 후 glow effect 적용
+paint on transparent : 해당 레이어의 배경은 투명하고 선만 남아있는 상태
+
+
+
+0728
+1. particular로 이용한 선
+-velocity, velocity from mition : 0
+-emitter - position 키프레임을 이용해 곡선 모양 설정
+-선의 길이 : 파티클 life
+-건의 굵기 : 파티클 size (emitter-particle/sec을 잘 조절, 렌더가 오래 걸릴 수 있음)
+-곡선을 이룰 때 곡선 부분의 각진 부분은 이미터 탭의 포지션 서브 프레임- smooth
+**rove across time : 처음부터 끝까지 같은 속도로 움직임을 주는 키프레임
+양쪽 끝의 얇아짐 : size over life
+
+2. cc Kaleida
+기하학 패턴 무늬 제작 시 이용
+여러가지 shape layer로 모양을 제작 후 pre-comp
+pre-comp 안에 cc Kaleida 적용 후 키프레임 조절
